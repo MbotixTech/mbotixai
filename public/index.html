@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MbotixTech Image AI</title>
+  <link rel="icon" href="/logo.png" type="image/png" />
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #c3dafe, #e0e7ff);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      transition: background 0.5s ease;
+    }
+
+    body.dark {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+    }
+
+    .fade-up {
+      animation: fadeUp 0.8s ease-in-out both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-page {
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .fade-out {
+      opacity: 0 !important;
+    }
+
+    h1, p, .author p, .author a {
+      transition: color 0.4s ease, text-shadow 0.4s ease;
+    }
+
+    body.dark h1,
+    body.dark p,
+    body.dark .author p,
+    body.dark .author a {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .author {
+      transition: color 0.4s ease;
+    }
+  </style>
+</head>
+<body class="fade-page" id="mainBody">
+  <div class="absolute top-4 right-4">
+    <button id="toggleDark" class="bg-white hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-full shadow transition-all">🌓 Toggle Mode</button>
+  </div>
+
+  <div class="container max-w-4xl text-center">
+    <h1 class="text-4xl font-bold mb-2 fade-up transition-colors duration-500 text-gray-900 dark:text-white">
+      🧠 MbotixTech Image Generator
+    </h1>
+    <p class="text-lg mb-4 fade-up transition-colors duration-500 text-gray-700 dark:text-gray-200 font-medium drop-shadow-sm">
+      Selamat datang! Pilih salah satu fitur di bawah ini:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 fade-up">
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 transform transition hover:scale-105 duration-300">
+        <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">🖼️ Edit Gambar + Prompt</h2>
+        <p class="text-gray-600 dark:text-gray-300">Upload gambar dan masukkan prompt untuk mengedit sesuai keinginanmu.</p>
+        <a href="/generate?function=edit" class="transition inline-block mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-full font-semibold">Gunakan Fitur</a>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 transform transition hover:scale-105 duration-300">
+        <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">✏️ Prompt Bebas</h2>
+        <p class="text-gray-600 dark:text-gray-300">Buat gambar baru hanya dari prompt yang kamu ketik. Simpel dan cepat.</p>
+        <a href="/generate?function=free" class="transition inline-block mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-full font-semibold">Gunakan Fitur</a>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 transform transition hover:scale-105 duration-300">
+        <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">🎨 Style Prompt</h2>
+        <p class="text-gray-600 dark:text-gray-300">Gunakan gaya preset seperti cyberpunk, dark, lucu, dan lainnya dengan topik saja.</p>
+        <a href="/generate?style=1" class="transition inline-block mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-full font-semibold">Gunakan Fitur</a>
+      </div>
+    </div>
+
+    <div class="mt-10 text-sm transition-colors duration-500 text-gray-700 dark:text-gray-300 author font-medium">
+      <p>Dibuat oleh <strong>MbotixTech</strong></p>
+      <a href="https://github.com/MbotixTech/" target="_blank" class="inline-flex items-center gap-2 mt-2 text-indigo-600 dark:text-indigo-300 hover:underline">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/github.svg" alt="GitHub" class="w-5 h-5 invert dark:invert-0" />
+        MbotixTech
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('a[href^="/generate"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = this.href;
+        }, 500);
+      });
+    });
+
+    const toggleDark = document.getElementById('toggleDark');
+    toggleDark.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+  </script>
+</body>
+</html>
