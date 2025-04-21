@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Halaman Tidak Ditemukan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/logo.png" type="image/png" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.4s ease;
+    }
+    .fade-up {
+      animation: fadeUp 0.8s ease-in-out both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .bounce {
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-500 via-blue-500 to-purple-600 min-h-screen text-white flex flex-col items-center justify-center p-6">
+
+  <div class="text-center max-w-lg">
+    <div class="text-6xl mb-4 fade-up bounce">🚫</div>
+    <h1 class="text-4xl font-bold fade-up">404 - Halaman Tidak Ditemukan</h1>
+    <p class="mt-4 text-lg text-white/90 fade-up">Sepertinya kamu tersesat atau URL yang dimasukkan salah.</p>
+    
+    <a href="/" class="inline-block mt-6 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-all fade-up">⬅️ Kembali ke Beranda</a>
+  </div>
+
+  <div class="mt-10 text-sm text-white/70 text-center fade-up">
+    <p>Dibuat oleh <strong class="text-white">MbotixTech</strong></p>
+    <a href="https://github.com/MbotixTech" target="_blank" class="inline-flex items-center gap-2 mt-2 text-white hover:text-yellow-300 hover:underline">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/github.svg" alt="GitHub" class="w-5 h-5 invert" />
+      MbotixTech
+    </a>
+  </div>
+</body>
+</html>
