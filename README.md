@@ -2,7 +2,7 @@
   <img src="mbotixtech.png" alt="MbotixTech Logo" width="200"/>
 </p>
 
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg) ![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg) ![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white) ![Vercel](https://img.shields.io/badge/Hosted_on-Vercel-black?logo=vercel) ![JSON](https://img.shields.io/badge/JSON-000000?logo=json&logoColor=white) ![OpenAI](https://img.shields.io/badge/OpenAI-412991?logo=openai&logoColor=white)
 
 # 🧠 MbotixTech - AI Image Generator
 
