@@ -5,10 +5,9 @@ const path = require('path');
 const { OpenAI } = require('openai');
 const fetch = require('node-fetch');
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
 const sharp = require('sharp');
 const mime = require('mime-types'); 
-
+const upload = multer({ storage: multer.memoryStorage() });
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -27,7 +26,6 @@ app.get('/generate', (req, res) => {
   const styleParam = req.query.style;
   const functionParam = req.query.function;
 
-  // Jika style=1 → redirect ke landing.html?function=style
   if (styleParam === '1') {
     return res.redirect('/landing.html?function=style');
   }
