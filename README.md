@@ -2,6 +2,8 @@
   <img src="mbotixtech.png" alt="MbotixTech Logo" width="200"/>
 </p>
 
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+
 # 🧠 MbotixTech - AI Image Generator
 
 Selamat datang di **MbotixTech AI Image Generator**, sebuah proyek open-source yang memanfaatkan teknologi OpenAI DALL·E 3 untuk menghasilkan gambar AI secara otomatis dari **prompt teks**, **preset gaya visual**, atau bahkan mengedit gambar yang diunggah.
@@ -53,6 +55,9 @@ Project ini dioptimalkan untuk Vercel. Pastikan:
 ```
 OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+## 🛡️ Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](./LICENSE) - silakan lihat file LICENSE untuk informasi lebih lanjut.
 
 ## 🧑‍💻 Author
 
