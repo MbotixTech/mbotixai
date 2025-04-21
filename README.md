@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="mbotixtech.png" alt="MbotixTech Logo" width="200"/>
+</p>
+
 # 🧠 MbotixTech - AI Image Generator
 
 Selamat datang di **MbotixTech AI Image Generator**, sebuah proyek open-source yang memanfaatkan teknologi OpenAI DALL·E 3 untuk menghasilkan gambar AI secara otomatis dari **prompt teks**, **preset gaya visual**, atau bahkan mengedit gambar yang diunggah.
@@ -53,6 +57,3 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ## 🧑‍💻 Author
 
 Created by [**MbotixTech**](https://github.com/MbotixTech)
-
-![image](https://github.com/user-attachments/assets/7ee3055f-91c4-4ee9-be7e-b6ebaf7fb3f8)
-
