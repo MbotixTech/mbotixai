@@ -8,7 +8,7 @@ const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 const sharp = require('sharp');
 const mime = require('mime-types'); 
-
+const upload = multer({ storage: multer.memoryStorage() });
 const app = express();
 const port = process.env.PORT || 3000;
 
