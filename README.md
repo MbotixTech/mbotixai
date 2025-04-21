@@ -54,4 +54,5 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 Created by [**MbotixTech**](https://github.com/MbotixTech)
 
-![GitHub](https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/github.svg)
+![image](https://github.com/user-attachments/assets/7ee3055f-91c4-4ee9-be7e-b6ebaf7fb3f8)
+
