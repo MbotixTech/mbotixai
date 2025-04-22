@@ -69,24 +69,25 @@ app.post('/generate', upload.single('image'), async (req, res) => {
 
     if (selectedFunction === 'edit') {
       if (!req.file || !customPrompt) return res.status(400).send('Gambar dan prompt harus disediakan.');
-
+    
       const buffer = await getImageBuffer();
-      const tempPngPath = path.join(tempDir, `edit_${Date.now()}.png`);
-      await sharp(buffer).png().toFile(tempPngPath);
-
+      const convertedBuffer = await sharp(buffer).png().toBuffer();
+    
+      const imageStream = require('stream').Readable.from(convertedBuffer);
+    
       const response = await openai.images.edit({
-        image: fs.createReadStream(tempPngPath),
+        image: imageStream,
         prompt: customPrompt,
         n: 1,
         size: '1024x1024',
       });
-
+    
       const imageUrl = response.data[0].url;
       const imgBuffer = await (await fetch(imageUrl)).arrayBuffer();
       const outPath = path.join(tempDir, `edited_${Date.now()}.png`);
       fs.writeFileSync(outPath, Buffer.from(imgBuffer));
       return res.json({ file: `/images/${path.basename(outPath)}` });
-    }
+    }    
 
     if (selectedFunction === 'free') {
       if (!customPrompt) return res.status(400).send('Prompt harus disediakan.');
