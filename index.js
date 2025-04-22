@@ -5,12 +5,16 @@ const path = require('path');
 const { OpenAI } = require('openai');
 const fetch = require('node-fetch');
 const multer = require('multer');
-const upload = multer({ storage: multer.memoryStorage() });
 const sharp = require('sharp');
-const mime = require('mime-types'); 
+const mime = require('mime-types');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+const isVercel = process.env.VERCEL === '1';
+const upload = isVercel
+  ? multer({ storage: multer.memoryStorage() })
+  : multer({ dest: 'uploads/' });
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -27,7 +31,6 @@ app.get('/generate', (req, res) => {
   const styleParam = req.query.style;
   const functionParam = req.query.function;
 
-  // Jika style=1 → redirect ke landing.html?function=style
   if (styleParam === '1') {
     return res.redirect('/landing.html?function=style');
   }
@@ -43,21 +46,23 @@ app.post('/generate', upload.single('image'), async (req, res) => {
   const topic = req.body.topic?.trim();
   const customPrompt = req.body.prompt?.trim();
   const selectedFunction = req.body.function;
-  const imagePath = req.file ? req.file.path : null;
-
   const tempDir = './temp/images';
+
   if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
 
   try {
     console.log(`🔄 Menjalankan fungsi: ${selectedFunction}`);
 
     if (selectedFunction === 'edit') {
-      if (!imagePath || !customPrompt) {
+      if (!req.file || !customPrompt) {
         return res.status(400).send('Untuk edit, gambar dan prompt harus disediakan.');
       }
 
+      const fileBuffer = isVercel ? req.file.buffer : fs.readFileSync(req.file.path);
+      const pngBuffer = await sharp(fileBuffer).png().toBuffer();
+
       const response = await openai.images.edit({
-        image: fs.createReadStream(imagePath),
+        image: pngBuffer,
         prompt: customPrompt,
         n: 1,
         size: '1024x1024',
@@ -116,16 +121,12 @@ app.post('/generate', upload.single('image'), async (req, res) => {
       return res.json({ file: `/images/${fileName}` });
     }
 
-    else {
-      return res.status(400).send('Fungsi yang dipilih tidak valid.');
-    }
-
+    return res.status(400).send('Fungsi yang dipilih tidak valid.');
   } catch (error) {
     console.error('❌ Terjadi error:', error);
     return res.status(500).send('Terjadi kesalahan saat generate/edit gambar');
   }
 });
-
 
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, 'public/404.html'));
